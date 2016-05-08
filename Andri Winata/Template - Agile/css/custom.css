@@ -1,0 +1,33 @@
+html, body {
+	height: 100%;
+}
+
+#wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+}
+
+#footer {
+	background-color:#d5d5d5;
+}
+
+#footer > .container {
+	margin: 20px 0 0 0;
+ 	height: 40px;
+ 	padding-left: 15px;
+  	padding-right: 15px;
+}
+
+.carousel-inner > .item > img{
+	margin: 0 auto;
+	width: 720px;
+	height: 450px;
+}
+
+.carousel-caption {
+	padding: 0;
+	padding-bottom: 16px;
+}
