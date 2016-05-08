@@ -1,0 +1,604 @@
+@font-face {
+    font-family: defaultFont;
+    src: url('../fonts/Montserrat-Regular.ttf');
+}
+html, body {margin:0;padding:0;height:100%;}
+body
+{
+    background: url('../images/background.jpg');
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    font-family: defaultFont !important;
+}
+#header
+{  
+    display: block;
+    /*removed by FS, bug logout*/
+    /*overflow: auto;*/
+}
+#footer
+{
+    background-color: #774c29;  
+    display: block;
+    overflow: auto;
+    height: 40px;
+    width: 100%;
+    color:#aaaaaa;
+    /*position:fixed;*/
+    left:0px;
+    bottom:0;
+}
+#whiteBlock
+{
+    text-align: center;
+    background-color:rgba(255,255,255,0.3);
+    font-size: 20px;
+    font-weight: bold;
+    color: #774c29;
+    padding-top: 5px;
+    padding-bottom:5px;
+}
+
+.ordernumber
+{
+    text-align: center;
+    background-color:white;
+    font-size: 20px;
+    font-weight: bold;
+    color: #774c29;
+    padding-top: 5px;
+    padding-bottom:5px;
+}
+#fontStyle{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+a.class1 
+{
+    color:#774c29;
+    padding:0em 0.5em;  
+    font-family: calibri;
+}
+a.class1:link  {text-decoration: none; color: #774c29;}
+a.class1:visited {text-decoration: none; color: #774c29;}
+a.class1:hover {text-decoration: none; color: #774c29;}
+a.class1:active {text-decoration: none; color: #774c29;}
+
+.navbar-default
+{
+    background-color: transparent;
+    border: none;
+}
+.navbar-materi
+{
+    text-align: center;
+}
+.btn
+{
+    /*width: 100%;*/
+    height: 2.4em;
+    color: white;
+}
+.subscribe
+{
+    width:40%; 
+    margin:0 auto;
+    margin-top:1em;    
+}
+.pink
+{
+    background-color: #fff5e9;
+}
+.transparent{
+   background-color:transparent;
+}
+.brown
+{
+    background-color: #774c29;
+}
+.search
+{
+    height: 3em;
+    vertical-align: middle;
+    line-height: 3em;
+    border:2px solid #c69c6c; 
+    color: #c69c6c;   
+    font-style: italic;
+    border-radius: 5px;
+}
+.go
+{
+    height: 3em;
+    vertical-align: middle;
+    line-height: 3em;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+}
+.header1
+{
+    margin-top: 1.4em;
+}
+.head1
+{
+    /*Wiedy 27/11/2015
+   /* margin-right: 2em;*/
+}
+.head3 span
+{
+    margin-right: 1em;
+}
+#content
+{
+    width:80%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+#carousel-example-generic
+{
+    margin-top: 3em;
+}
+.carousel-inner
+{
+    /*modified by FS 1 Nov*/
+    max-height: 30em;
+    margin-bottom: 3em;
+}
+.carousel-control.left , .carousel-control.right
+{
+    margin: 0;
+}
+/*
+.carousel-inner img
+{
+    width: 100%;
+}*/
+.carousel-inner > .item > img{
+   width:100%;
+   /*Modified by FS 9 Des*/
+   max-height:50em;
+   /*margin-bottom: 3em;*/
+ }
+
+.box
+{
+    box-shadow: 1px 1px 7px 3px #855e3f;
+    height: 100%;
+    padding: 1.4em 1.4em 1.4em 1.4em;
+    display: block;
+    overflow: auto;
+}
+.box h2
+{
+    margin-top: 0;
+}
+.box h3
+{
+    margin-top: 15px;
+}
+.box .title
+{
+    border-bottom: solid #654931;
+    border-width: 2px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.white
+{
+    background-color: white;
+}
+.no-padding
+{
+    padding: 0 0 0 0;
+}
+.right
+{
+    margin-right: 2em;
+}
+.right-padding
+{
+    padding-right: 1em;
+}
+.left
+{
+    margin-left: 2em;
+}
+.top
+{
+    margin-top: 2em;    
+}
+.bottom
+{
+    margin-bottom: 2em;
+}
+.box-product
+{
+    border: 1px solid #cfcfcf;    
+    height: 12em;
+}
+.product
+{
+    text-align: center;
+}
+.product-thumb{
+    max-width: 100%;
+    height: 100%;
+    margin:0 auto;
+}
+.box-price
+{
+    background-color: #70543c;
+    color: white;
+    height: 2.6em;
+    line-height: 2.6em;
+    vertical-align: middle;
+    font-size: 1.2em;
+}
+.center
+{
+    text-align: center;
+}
+.round
+{
+    background-color: #57381e;
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 4em;
+    font-size: 1em;
+}
+.right-s
+{
+    margin-right: 1em;
+}
+
+.contact h3
+{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: #764c28;
+}
+.contact p
+{
+    margin-top: 1em;
+    font-size: 1.2em;
+}
+.cart
+{
+    border-top: 1px solid #654931;
+    border-bottom: 1px solid #cfcfcf;
+    margin-top: 0.5em;
+    padding-bottom: 2em;
+    line-height: 8em;
+    vertical-align: middle;
+    font-size: 1.2em;
+    font-weight: 600 !important;
+}
+
+.cart h4
+{
+    width:100%;
+}
+.qty
+{
+    width: 60%;
+    height: 2.5em;
+    vertical-align: middle;
+    line-height: 2.5em;
+    border:1px solid #c69c6c; 
+    color: #c69c6c; 
+    display: inline-block;   
+    padding-left: 1em;
+}
+.link a
+{
+    color: #774c29;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+@media screen and (max-width: 480px) {
+   #logo{
+    max-width: 100%;
+    height: auto;
+   }
+   #footerContent{
+    font-family: calibri;
+    font-size: 1em;
+}
+}
+.head1-small
+{
+    color: red !important;
+}
+
+input[type="radio"]{
+  margin: 0 15px 0 0px;  
+}
+
+.content-radio-payment
+{
+    margin-left: 2.1em;
+    margin-top: -1em;
+    margin-bottom: 2em;
+}
+.payment
+{
+    border-top: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+}
+.form red
+{
+    color: red;
+    margin-left: 0.5em;
+}
+.text-form
+{
+    display: inline-flex;
+}
+.textArea
+{
+    vertical-align: middle;
+    line-height: 3em;
+    border:2px solid #c69c6c; 
+    color: #c69c6c;   
+    font-style: italic;
+    border-radius: 5px;
+    width: 100%;
+    margin-left: 1em;
+    padding-left: 1em;
+}
+.form .row
+{
+    margin-bottom: 1em;
+}
+.form .text
+{
+    padding-right: 1.4em;
+    vertical-align: middle;
+    line-height: 3em;
+    border:2px solid #c69c6c; 
+    color: #c69c6c;   
+    font-style: italic;
+    border-radius: 5px;
+    width: 100%;
+    margin-left: 1em;
+    padding-left: 1em;
+}
+.form
+{
+    margin-top: 2em;
+}
+/*modified by FS 1 Nov*/
+#headerHolder
+{
+    float:right;
+    /*margin-right:3em;*/
+}
+#navbar-main li:last-child
+{
+    float:left;
+}
+/*modified by FS 5 Des*/
+.innerContent
+{
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus
+{
+    background-color: transparent;
+}
+.dropdown-menu .dropdown-header:hover
+{
+    background-color: #774c29;
+    color:white;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus
+{
+    background-color: transparent;
+    color:white;
+}
+.userMenu > a
+{
+    color:#774c29;
+}
+/*modified by FS 8 Des*/
+.userMenu:hover>ul>li
+{
+    background-color: #774c29;
+    color:white;
+}
+.box-discount
+{
+    
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    color:white;
+}
+.discount-star
+{
+    width: 100px;
+}
+.dicount-text
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: x-large;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.7em;
+}
+/*end of modification*/
+/*modified by FS 9 Des*/
+#whiteBlock span a
+{
+    color:#774c29;
+}
+#footer div span
+{
+    font-size: xx-large;
+    color: black;
+    padding-top: 0.2em;
+}
+#whiteBlock button
+{
+    float:left; 
+    line-height:1;
+    height:auto; 
+    background-color:#774c29; 
+    color:white;
+    margin:0.1em;
+}
+.carousel-caption
+{
+    top:300px !important;
+}
+/*modified by FS 12 Des*/
+.btn:hover
+{
+    color:white;
+    background-color: #673c19;
+}
+.badge
+{
+    position: absolute;
+    left: 30px;
+    top: 5px;
+    background-color:#774c29;
+}
+@media screen and (max-width: 980px)
+{
+    .contact-content
+    {
+        margin-right: 0 !important;                
+    }
+    .header1-small
+    {
+        display: block !important;
+    }
+    /*modified by FS 1 Nov*/
+    .right
+    {
+        margin-right: 0;
+    }
+    #headerHolder
+    {
+        margin-right:0;
+    }
+    #navbar-main li
+    {
+        float:left;
+    }
+    /*
+    #navbar-main li:last-child
+    {
+        float:none;
+    }*/
+}
+@media screen and (min-width: 600px)
+{
+    .head1-small
+    {
+        display: none;
+    }
+    .head1
+    {
+        display: block !important;
+    }
+    .logo-small
+    {
+        display: none;
+    }
+    .logo-large
+    {
+        display: block !important;
+    }
+    .description-product{
+        padding-left:20px;
+    }
+}
+@media screen and (max-width: 600px)
+{
+    .head1-small
+    {
+        display: block;
+    }
+    .customNavigation{
+        display :none;
+    }
+    .head1
+    {
+        display: none !important;
+    }
+    .logo-small
+    {
+        display: block;   
+    }
+    .logo-large
+    {
+        display: none !important;
+    }
+    .description-product{
+        padding-left:0px;
+        padding-top:20px;
+    }
+}
+
+
+@media screen and (max-width: 890px)
+{
+    .description-product{
+        padding-left:0px;
+        padding-top:20px;
+    }
+}
+
+
+
+@media screen and (max-width: 600px)
+{
+    #navbar-main li:last-child
+    {
+        float:left;
+    }
+}
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+

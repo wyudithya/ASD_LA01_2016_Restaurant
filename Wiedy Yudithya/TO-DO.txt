@@ -1,0 +1,12 @@
+1. Tampilin pesan error pas login
+// 2. Tombol logout user
+3. Edit profile user
+// 4. View product by category
+5. Track order (di dropdown user)
+6. Cart
+7. Checkout
+8. Confirm payment
+9. Banner dinamis
+10. Popular products
+// 11. Discount
+12. Product with highest discount

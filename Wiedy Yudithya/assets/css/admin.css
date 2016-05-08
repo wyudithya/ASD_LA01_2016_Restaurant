@@ -1,0 +1,44 @@
+.logo
+{
+	padding-left: 2em;
+    height: 50px;
+}
+.readNotification
+{
+	background-color: #f5f5f5;
+}
+ul.dropdown
+{
+	padding-left: 0;
+	overflow-y:auto;
+}
+ul.dropdown li
+{
+	padding-left: 1em;
+	padding-right: 1em;
+}
+ul.dropdown li:hover
+{
+	background-color: #f5f5f5;
+}
+ul.dropdown li a
+{
+	color:black;
+}
+ul.dropdown li a:hover
+{
+	text-decoration: none;
+}
+.countNotification
+{
+	float:right;
+	background-color: lightcoral;
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+	border-radius: 1em;
+	color:black;
+}
+#page-wrapper
+{
+	padding-bottom: 5em;
+}
