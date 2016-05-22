@@ -21,12 +21,12 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$this->checkLogin();
-		$this->load->model('Admin_model','admin');
-		$this->load->model('Dashboard_model','dashboard');
-		$data = $this->admin->initializeTemplate();
-		$data["topProduct"] = $this->dashboard->getMostSoldProduct();
-		$data["topUser"] = $this->dashboard->getTopUser();
-		$data["sales"] = $this->dashboard->getWeeklySales(10);
+		//$this->load->model('Admin_model','admin');
+		//$this->load->model('Dashboard_model','dashboard');
+		$data="asda";
+		// $data["topProduct"] = $this->dashboard->getMostSoldProduct();
+		// $data["topUser"] = $this->dashboard->getTopUser();
+		// $data["sales"] = $this->dashboard->getWeeklySales(10);
 		//die(json_encode($data["sales"]));
 		//die();
 		$this->load->view('BackEnd/BackEndHome_Index',$data);

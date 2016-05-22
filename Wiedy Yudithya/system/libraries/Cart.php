@@ -22,7 +22,7 @@
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * LIABILITY, WHETHER IN AN ACTION OF NTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
@@ -129,6 +129,7 @@ class CI_Cart {
 	public function insert($items = array())
 	{
 		// Was any cart data passed? No? Bah...
+
 		if ( ! is_array($items) OR count($items) === 0)
 		{
 			log_message('error', 'The insert method must be passed an array containing data.');
@@ -141,10 +142,13 @@ class CI_Cart {
 		// at the top level. If it's not found, we will assume it's a multi-dimensional array.
 
 		$save_cart = FALSE;
+
 		if (isset($items['id']))
 		{
+
 			if (($rowid = $this->_insert($items)))
-			{
+			{		
+
 				$save_cart = TRUE;
 			}
 		}
@@ -166,6 +170,7 @@ class CI_Cart {
 		if ($save_cart === TRUE)
 		{
 			$this->_save_cart();
+
 			return isset($rowid) ? $rowid : TRUE;
 		}
 

@@ -3,40 +3,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	function __construct()
 	{
 		parent::__construct();
 	}
 
-	public function cart($ProductID,$discount,$qty,$price,$name,$color){
-		$name = str_replace("-"," ",$name);
-		$name = str_replace("%20"," ",$name);
+	public function cart(){
 
+		$id = $this->uri->segment(3);
+  		$qty =  $this->uri->segment(4);
+  		$price = $this->uri->segment(5);
+  		$desc = $this->uri->segment(6);
+  		$photo = $this->uri->segment(7);
 		$data = array(
-               'id'      => $ProductID,
-               'qty'     => $qty,
-               'price'   => $price-($price*$discount/100),
-               'name'    => $name,
-               'discount' => $discount,
-               'color'	=> $color
+               'id'      => "1",
+               'qty'     => 5,
+               'price'   => 2,
+               'name'    => "Meat Lover",
+               'desc' => "Dirisi dengan hati",
+               'photo' => "assets/themes/images/products/a.png"
              );
 		$this->cart->insert($data);
-/*
+
 		$i = 1; 
 		foreach ($this->cart->contents() as $items):
 			echo $i.'-----'.'[rowid]'.'---'.$items['rowid'];
@@ -68,65 +56,42 @@ class Home extends CI_Controller {
 
 		$i++;
 
-		endforeach; */
-		
+		endforeach;
+		die();
 		redirect('Cart');
 
+	}
+
+	public function addtoCart(){
+	  	$id = $this->input->post("id");
+	  	$name =  $this->input->post("name");
+  		$qty =  $this->input->post("qty");
+  		$price = $this->input->post("price");
+  		$desc = $this->input->post("desc");
+  		$photo = $this->input->post("photo");
+		$data = array(
+               'id'      => $id,
+               'qty'     => $qty,
+               'price'   => $price,
+               'name'    => $desc,
+               'desc' => $name,
+               'photo' => $photo
+             );
+	  $this->cart->insert($data);
+	  redirect('Cart');
 	}
 	public function index()
 	{
 		$data['content']='FrontEnd/home';
 		$data['title']='Home';
-		
-		// //data for body
-		// $this->load->model('Product_model','product');
-		// $this->load->model('Banner_model','banner');
-		// $data['newproducts'] = $this->product->getNewProducts(12,0);
-		// $data['featuredproducts'] = $this->product->getFeaturedProducts(12,0);
-		// $data['hotitems'] = $this->product->getHotItems();
-		// $data['discounted'] = $this->product->getDiscountedProducts(12,0);
-		// $data['popular'] = $this->product->getPopularProducts(12,0);
-		// $data['banner'] = $this->banner->getAllBanner();
-		
-		//data for header
-		// $this->load->model('Category_model','category');
-		// $data['category'] = $this->category->loadCategories();
-		$this->load->view('FrontEnd/master',$data);
-		//$this->load->view('FrontEnd/test');
-	}
 
-	public function search()
-	{
-		$order = '';
-		$desc= '';
-		if(isset($_GET['sort']))
-		{
-			$s = $_GET['sort'];
-			$ss = explode(' ', $s);
-			$order = $ss[0];
-			$desc = $ss[1];
-		}
-		$q = $_GET["q"];
-		$keywords = explode(' ',$q);
-		//created by FS 9 Des
-		$this->load->model('Category_model','category');
-		$title = "Search Result for '".$q."'";
+		$this->load->model('Product_model','product');
+		$data['food'] = $this->product->getProduct(1);
+		$data['drink'] = $this->product->getProduct(2);
 
-		$data['content']='FrontEnd/product';
-		$data['title']='Vape - Search Result';
-
-		//data for body
-		$this->load->model("Util","util");
-		$data['header'] = $title;
-		$data['product'] = $this->util->search($q,$order,$desc);
-		$data['q'] = $q;
-		if(isset($s))
-			$data['sortBy'] = $s;
-		
-		//data for header
-		$data['category'] = $this->category->loadCategories();
 		$this->load->view('FrontEnd/master',$data);
 	}
+	
 	public function detail_product($id=false)
 	{
 		if($id==false){

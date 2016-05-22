@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container">
 		<div class="login-container">
         	<div id="output"></div>
-        	<img src="<?php echo base_url();?>assets/images/logo.png" class= "avatar">
+        	<img src="<?php echo base_url();?>assets/images/logo.png" class= "avatar" style="height:47px;">
             <div class="form-box">
             <?php
         		echo $err;

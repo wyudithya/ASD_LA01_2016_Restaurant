@@ -11,13 +11,10 @@
 			<table class="table table-bordered table-hover table-striped tablesorter">
 			<thead>
 				<tr>
-					<th>ProductName</th>
-					<th>CategoryName</th>
+					<th>Name</th>
 					<th>Price</th>
-					<th>ProductDesc</th>
-					<th>TransactionCount</th>
-					<th>Discount</th>
-					<th>Detail</th>
+					<th>Desc</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,16 +25,12 @@
 				{ ?>
 					<tr onclick="document.location = '<?php echo base_url() ?>BackEnd/Products/viewProductbyID/<?php echo $product[$i]->ProductID ?>';" style="cursor:pointer">
 						<td><?php echo $product[$i]->ProductName ?></td>
-						<td><?php echo $product[$i]->CategoryName ?></td>
 						<td><?php echo $product[$i]->Price ?></td>
-						<td><?php echo $product[$i]->ProductDesc ?></td>
-						<td><?php echo $product[$i]->TransactionCount ?></td>
-						<td><?php echo $product[$i]->Discount ?></td>
-						<?php if(strpos($product[$i]->color,'#')!==false){ ?>
-							<td><?php if($product[$i]->color!="") { ?><div style="border: 1px solid #000; width:25px; height:25px; background-color:<?php echo $product[$i]->color ?>"><?php } ?></td>
-						<?php } else { ?>
-							<td><?php echo $product[$i]->color ?></td>
-						<?php } ?>
+						<td><?php echo $product[$i]->Desc?></td>
+						<td>
+						<button class="btn btn-primary" onclick="document.location = 'http://localhost:8080/vapebeta/BackEnd/BankAccount/edit/1';"><span class="fa fa-pencil"></span> Edit</button>
+						<button class="btn btn-danger" onclick="prepareToDelete('1')" data-toggle="modal" data-target="#myModal"><span class="fa fa-trash-o"></span> Delete</button>
+						</td>				
 					</tr>
 				<?php  } 
 			} else{ ?>

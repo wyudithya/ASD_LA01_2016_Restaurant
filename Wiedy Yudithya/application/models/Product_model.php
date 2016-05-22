@@ -12,42 +12,17 @@ class Product_model extends CI_Model {
 	{
 		$result = array();
 		//modified by FS 1 Des
-		$queryString = "SELECT ProductID,ProductName,ProductDesc, Price ,CategoryName, Color, TransactionCount, Discount FROM msproduct JOIN mscategory ON msproduct.CategoryID = mscategory.CategoryID WHERE msproduct.AuditedActivity <> 'D'";
+		$queryString = "SELECT ProductID,ProductName, ProductDecription, ProductPrice from msproduct";
 		$query = $this->db->query($queryString);
 		
 		for($i=0;$i<$query->num_rows();$i++)
 		{ 
-			$temp = new Temp();
+			$temp = new stdClass();
 			$temp->ProductID = $query->row($i)->ProductID;
 			$temp->ProductName = $query->row($i)->ProductName;
-			$temp->Price = $query->row($i)->Price;
-			$temp->CategoryName = $query->row($i)->CategoryName;
-			$temp->TransactionCount = $query->row($i)->TransactionCount;
-			$temp->Discount = $query->row($i)->Discount;
-			//modified by FS 1 Des
-			$temp->color = $query->row($i)->Color;
-			$arr = explode(" ", $query->row($i)->ProductDesc);
-			$ProductDesc = "";
-			$charCount = 0;
+			$temp->Price = $query->row($i)->ProductPrice;
+			$temp->Desc = $query->row($i)->ProductDecription;
 			
-			if(strlen($query->row($i)->ProductDesc) > 300)
-			{	
-				$arr = "";
-				$arr = explode(" ", $query->row($i)->ProductDesc);
-				$ProductDesc = "";
-				
-				for($j = 0 ; $j < 15 ; $j++)
-				{
-					$ProductDesc = $ProductDesc . " ". $arr[$j];
-					$charCount += strlen($arr[$i]);
-					if($charCount>300)
-						break;
-				}
-				$temp->ProductDesc = $ProductDesc . "...";
-			}else
-			{
-				$temp->ProductDesc = $query->row($i)->ProductDesc;
-			}
 			array_push($result, $temp);			
 		}
 		return $result;
@@ -168,10 +143,10 @@ class Product_model extends CI_Model {
 		
 		return $temp;
 	}
-	function getNewProducts($limit, $offset){
+	function getProduct($jenis){
 		//modified by FS 9 Des
-		$queryString= "SELECT ProductID, ProductName, Price, Photo,Discount from msproduct WHERE AuditedActivity <> 'D' ORDER BY AuditedTime DESC LIMIT ? OFFSET ?";
-		$query = $this->db->query($queryString,array($limit, $offset));
+		$queryString= "SELECT ProductID, ProductName, ProductPrice, ProductDecription, ProductPhoto from msproduct WHERE ProductCategory = ? LIMIT 4";
+		$query = $this->db->query($queryString,array($jenis));
 		$i=0;
 		if($query->num_rows() === 0){
 			return false;
@@ -180,10 +155,9 @@ class Product_model extends CI_Model {
            {
                $Data[$i]['ProductID'] = $Row->ProductID;
                $Data[$i]['ProductName'] = $Row->ProductName;
-               $Data[$i]['Price'] = $Row->Price; 
-               $arr = explode(";", $Row->Photo);
-			   $Data[$i]['Thumbnail']= $arr[0];
-               $Data[$i]['Discount'] = $Row->Discount;
+               $Data[$i]['ProductPrice'] = $Row->ProductPrice; 
+			   $Data[$i]['ProductPhoto']= $Row->ProductPhoto;
+			   $Data[$i]['ProductDescription']= $Row->ProductDecription;
                $i++;
            }
 			return $Data;
@@ -234,41 +208,23 @@ class Product_model extends CI_Model {
 	}
 
 	function getDetailProducts($id){
-		$queryString= "SELECT ProductID, mc.CategoryID, CategoryName, ProductName,ProductDesc, Price, Photo,Discount,Color, ShortDescription from msproduct mp, mscategory mc WHERE mp.CategoryID=mc.CategoryID AND mp.AuditedActivity <> 'D' AND ProductID='".$id."'";
+		$queryString= "SELECT b.ProductID, b.ProductName, b.ProductDecription, b.ProductPhoto, c.ingredientName FROM msproduct b LEFT Join msrecipe a on a.ProductID = b.ProductID JOIN msingredient c on a.ingredientid = c.id WHERE a.ProductID='".$id."'";
 		$query = $this->db->query($queryString);
 		if($query->num_rows() === 0){
 			return false;
 		}else{
+		  $Data['ingredientName'] = "";
            foreach ($query->result() as $Row)
            {
                $Data['ProductID'] = $Row->ProductID;
-               $Data['CategoryID'] = $Row->CategoryID;
-               $Data['CategoryName'] = $Row->CategoryName;
                $Data['ProductName'] = $Row->ProductName;
-               $Data['ProductDesc'] = $Row->ProductDesc;
-               $Data['Price'] = $Row->Price;
-               //modified by FS 1 Des
-               $Data["color"] = $Row->Color;
-               $Data["shortDescription"] = $Row->ShortDescription;
-               $arr = explode(";", $Row->Photo);
-               $Data['Photo'][0]="";
-               for($i=0; $i<sizeof($arr); $i++){
-           			$Data['Photo'][$i]= $arr[$i];   
-           	   }
-               $Data['Discount'] = $Row->Discount;
-               //modified by FS 1 Des
-               $Data['otherColor'] = array();
-
-               $qs = "SELECT ProductID, Color, Photo FROM msproduct WHERE AuditedActivity<>'D' AND ProductID<>? AND ProductName = ?";
-				$q = $this->db->query($qs, array($Data['ProductID'], $Data['ProductName']));
-				for($i=0;$i<$q->num_rows();$i++)
-				{
-					$color = new stdClass();
-					$color->productID = $q->row($i)->ProductID;
-					$color->color = $q->row($i)->Color;
-					$color->photo = $q->row($i)->Photo;
-					array_push($Data['otherColor'], $color);
-				}
+               $Data['ProductDecription'] = $Row->ProductDecription;
+               $Data['ProductPhoto'] = $Row->ProductPhoto;
+               if($Data['ingredientName']=="")
+               	$Data['ingredientName'] = $Row->ingredientName;
+  				else{
+  					$Data['ingredientName'] = $Data['ingredientName'] . ', '.$Row->ingredientName;
+  				}
 
                return $Data;
            }

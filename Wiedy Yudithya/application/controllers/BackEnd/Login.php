@@ -37,15 +37,11 @@ class Login extends CI_Controller {
 			$error['err'] = 'Invalid username or password';
 			$this->load->view('BackEnd/BackEndHome_Login',$error);
 		}
-		else if($this->session->userdata('username') != null && $this->session->userdata('username') !="" && $this->session->userdata('UserType')!="Customer")
-		{
-			redirect('BackEnd/Home');
-		}
 		else{
 			$data = array (
-					'username' => $query->row(0)->Username,
-					'userType' => $query->row(0)->UserType,
-					'userTypeID' => $query->row(0)->UserTypeID,
+					'username' => $query->row(0)->UserName,
+					'userType' => $query->row(0)->Usertypename,
+					'userTypeID' => $query->row(0)->usertypeid,
 					'userID' => $query->row(0)->UserID
 				);
 			$this->session->set_userdata($data);
@@ -56,6 +52,6 @@ class Login extends CI_Controller {
 
 	public function logout(){
 		$this->session->unset_userdata('username');
-		redirect('/Admin');
+		redirect('BackEnd/Login');
 	}
 }
